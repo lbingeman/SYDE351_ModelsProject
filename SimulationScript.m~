@@ -12,21 +12,21 @@ l2 = 0.150; %[m]
 m1 = .12228; %[kg]
 m2 = .13523; %[kg]
 
-b1 = 0.03; % [N/(m/s)]
-b2 = 0.12; % [N/(m/s)]
+b1 = 0.006325; % [N/(m/s)]
+b2 = 0.00225; % [N/(m/s)]
 
-k21 =  16.536; %[N/m]- spring constant
+k21 = 0;%16.536; %[N/m]- spring constant
 
-x0 = 0.041; %[m] - initial unstretched spring length
+x0 = 0;%0.041; %[m] - initial unstretched spring length
 
 % Initial condition
 t_start = 0; %[s]
-t_stop = 10; %[s]
-x_inital = 0.065;
+t_stop = 320; %[s]
+x_inital = 0.12;
 p17_initial = 0;
 p37_initial = 0;
-theta_1_initial = pi/18;
-theata_2_initial = 0;
+theta_1_initial = pi/6;
+theata_2_initial = pi/6;
 
 tspan = [t_start t_stop];
 y0 = [p17_initial p37_initial (x_inital-x0) theta_1_initial theata_2_initial];
@@ -54,12 +54,12 @@ ylabel("Velocity (m/s)");
 legend('Mass 2')
 
 [pks_1,ts_1] = findpeaks(y(:,4),t);
-lastOscillation_1 = max(ts_1(pks_1 >= 0.0174533/1));
-pks_1 = pks_1(pks_1 >= 0.0174533/1);
+lastOscillation_1 = max(ts_1(pks_1 >= 0.05235));
+pks_1 = pks_1(pks_1 >= 0.05235);
 
 [pks_2,ts_2] = findpeaks(y(:,5),t);
-lastOscillation_2 = max(ts_2(pks_2 >= 0.0174533/16));
-pks_2 = pks_2(pks_2 >= 0.0174533/16);
+lastOscillation_2 = max(ts_2(pks_2 >= 0.05235));
+pks_2 = pks_2(pks_2 >= 0.05235);
 
 subplot(3,2,3);
 plot(t,y(:,4),'r');
